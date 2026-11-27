@@ -63,7 +63,8 @@ public class DogEat : MonoBehaviour
             if (sickTimer <= 0f)
             {
                 movement.speedMultiplier = 1f;
-                Debug.Log("I feel better now!");
+                movement.wobbleAmount = 0f;
+                UIManager.Instance.Say("You", "I feel better now!");
             }
         }
 
@@ -159,13 +160,14 @@ public class DogEat : MonoBehaviour
         if (food.IsSafe())
         {
             strongNoseTimer = strongNoseDuration;
-            Debug.Log("Yum, " + food.foodName + "! My nose is stronger now!");
+            UIManager.Instance.Say("You", "Yum " + food.foodName + "! My nose is stronger now!");
         }
         else
         {
             sickTimer = sickDuration;
-            movement.speedMultiplier = sickSpeed;
-            Debug.Log("Yuck, the " + food.foodName + " was " + food.type + ". I feel sick.");
+            movement.speedMultiplier = sickSpeed; 
+            movement.wobbleAmount = 30f;
+            UIManager.Instance.Say("You", "Yuck, the " + food.foodName + " was " + food.type + ". I feel sick.");
         }
 
         if (food == carriedFood)

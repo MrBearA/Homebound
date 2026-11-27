@@ -11,6 +11,7 @@ public class DogMovement : MonoBehaviour
     public float gravity = -20f;
     public Transform cameraTransform;
     public float speedMultiplier = 1f;
+    public float wobbleAmount = 0f;
 
     private float verticalVelocity = 0f;
     private CharacterController controller;
@@ -39,6 +40,12 @@ public class DogMovement : MonoBehaviour
         camForward.Normalize();
         camRight.Normalize();
         Vector3 direction = camForward * input.y + camRight * input.x;
+
+        if(wobbleAmount > 0f)
+        {
+            float angle = Mathf.Sin(Time.time * 5f) * wobbleAmount;
+            direction = Quaternion.Euler(0f, angle, 0f) * direction;
+        }
 
         float speed = sprintAction.IsPressed() ? runSpeed : walkSpeed;
         
