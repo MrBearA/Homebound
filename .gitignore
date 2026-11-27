@@ -35,3 +35,7 @@ crashlytics-build.properties
 # OS junk
 .DS_Store
 Thumbs.db
+
+# Unity crash-recovery backups
+/[Aa]ssets/_Recovery/
+/[Aa]ssets/_Recovery.meta

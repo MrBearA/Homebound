@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class UIManager : MonoBehaviour
 {
@@ -8,6 +10,9 @@ public class UIManager : MonoBehaviour
     public TMPro.TMP_Text speakerText;
     public TMPro.TMP_Text dialogueText;
     public float dialogueTime = 3f;
+    public GameObject endScreen;
+
+
 
     private float dialogueTimer = 0f;
 
@@ -20,6 +25,7 @@ public class UIManager : MonoBehaviour
     {
         HidePrompt();
         dialoguePanel.SetActive(false);
+        endScreen.SetActive(false);
     }
 
     public void ShowPrompt(string message)
@@ -54,5 +60,14 @@ public class UIManager : MonoBehaviour
             }
         }
 
+        if (endScreen.activeSelf && Keyboard.current.rKey.wasPressedThisFrame)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+    }
+
+    public void ShowEndScreen()
+    {
+        endScreen.SetActive(true);
     }
 }

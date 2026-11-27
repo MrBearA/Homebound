@@ -13,6 +13,8 @@ public class HomeGoal : MonoBehaviour
         {
             reached = true;
             UIManager.Instance.Say("You", "I made it home! I can finally rest now.");
+            dog.enabled = false;
+            UIManager.Instance.ShowEndScreen();
         }
     }
 }
