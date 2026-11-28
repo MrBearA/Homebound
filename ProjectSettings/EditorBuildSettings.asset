@@ -9,6 +9,18 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Menu.unity
     guid: a15ec15ff6f960948baab7a0e9ccf691
   - enabled: 1
+    path: Assets/Scenes/Scene1_Home.unity
+    guid: ff16ee9924222464f97e3b8c854bf18d
+  - enabled: 1
+    path: Assets/Scenes/Scene2_Barangay.unity
+    guid: 0eb64bdd85861134891253dde58e3f30
+  - enabled: 1
+    path: Assets/Scenes/Scene3_Province.unity
+    guid: 2a11bdfce1d6c064183420d5856b52a2
+  - enabled: 1
+    path: Assets/Scenes/Scene4_NewTown.unity
+    guid: dd986d4ae20c27c439f126b769722115
+  - enabled: 0
     path: Assets/Scenes/GamePlay.unity
     guid: 7c222781d5938f3409710a4e082da707
   - enabled: 0

@@ -20,6 +20,7 @@ public class StrayDog : MonoBehaviour
         if (food.IsSafe())
         {
             helped = true;
+            GameState.pipHelped = true;
             UIManager.Instance.Say(dogName, "Happy eating the " + food.foodName + "! Thank you for helping me!");
             return true;
         }

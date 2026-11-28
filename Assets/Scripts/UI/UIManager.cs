@@ -62,7 +62,7 @@ public class UIManager : MonoBehaviour
 
         if (endScreen.activeSelf && Keyboard.current.rKey.wasPressedThisFrame)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            SceneManager.LoadScene("Main Menu");
         }
     }
 
