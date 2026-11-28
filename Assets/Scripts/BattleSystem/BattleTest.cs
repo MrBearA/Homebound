@@ -1,11 +1,25 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class BattleTest : MonoBehaviour
 {
-    void Start()
+    public BattleOpponent target;
+
+    void Update()
     {
-        Debug.Log("Bark vs Angry: " + BattleRules.Multiplier(MoveKind.Loud, Mood.Angry));
-        Debug.Log("Play Bow vs Proud: " + BattleRules.Multiplier(MoveKind.Gentle, Mood.Proud));
-        Debug.Log("Hold Ground vs Scared: " + BattleRules.Multiplier(MoveKind.Firm, Mood.Scared));
+        if(Keyboard.current.digit1Key.wasPressedThisFrame)
+        {
+            target.TakeHit(MoveKind.Loud, 2f);
+        }
+
+        else if (Keyboard.current.digit2Key.wasPressedThisFrame)
+        {
+            target.TakeHit(MoveKind.Firm, 2f);
+        }
+
+         else if (Keyboard.current.digit3Key.wasPressedThisFrame)
+        {
+            target.TakeHit(MoveKind.Gentle, 3f);
+        }
     }
 }
