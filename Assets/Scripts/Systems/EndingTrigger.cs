@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 // The three endings from the GDD.
 public enum EndingType { Reunion, NewPack, OpenRoad }
@@ -28,9 +30,26 @@ public class EndingTrigger : MonoBehaviour
         if (dog != null && !reached)
         {
             reached = true;
+
+            // Stop the dog: no walking, sniffing or eating behind the ending card.
             dog.enabled = false;
+            dog.GetComponent<DogEat>().enabled = false;
+            dog.GetComponent<DogSniff>().enabled = false;
+
+            // Clear the game UI so nothing overlaps the ending card.
+            UIManager.Instance.HidePrompt();
+            UIManager.Instance.dialoguePanel.SetActive(false);
+
             SceneFader.ShowCard(title, GameState.Format(text) + "\n\n<size=70%>Press R to return to the menu</size>");
-            UIManager.Instance.ShowEndScreen();   // UIManager listens for R
+        }
+    }
+
+    void Update()
+    {
+        // After the ending, R goes back to the Main Menu.
+        if (reached && Keyboard.current.rKey.wasPressedThisFrame)
+        {
+            SceneManager.LoadScene("Main Menu");
         }
     }
 }
